@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="https://sillyvyxia.github.io/common.css">
+    <head>
+        <link rel="icon", href="https://sillyvyxia.github.io/images/vyxia heading.png">
+        <title>Vyxia's Age</title>
+    </head>
+    <body style="background-color: color(srgb 0.15 0 0.15);">
+        <iframe id="navBar" src="https://sillyvyxia.github.io/navBar.html"></iframe>
+        <hr>
+        <h3 style="color: gainsboro;">Vyxia is currently:</h3>
+        <p style="text-align: center;">
+            <span id="age stuff int" style="font-family: monospace; font-size: 120pt; color: white">:3</span>
+            <span id="age stuff float" style="font-family: monospace; font-size: 60pt; color: white">.0</span>
+        </p>
+        <h3 style="color: gainsboro;">years old!</h3>
+        <br>
+        <h5 style="color: gray; text-align: center;">note: this should display in GMT-6</h5>
+        <script src="agecalc.js"></script>
+        <script>
+			agecounterint = document.getElementById("age stuff int")
+			agecounterfrac = document.getElementById("age stuff float")
+
+			const bDate = new Date('2007-08-22T06:00:00')
+			
+			updateAgeCounter = function() {
+				now = new Date()
+
+				utcDate = new Date(now.toISOString().replace('T', ' ').split('.')[0] + '.' + String(now.getMilliseconds()).padStart(3, '0'))
+				
+				const ageStr = calcAge(bDate, utcDate).toFixed(12)
+				
+				const ageStrs = ageStr.split(".")
+				
+				let ageStrInt = ageStrs[0];
+				let ageStrFrac = "." + ageStrs[1];
+				if (ageStrInt != agecounterint.innerHTML) {
+				    agecounterint.innerHTML = ageStrInt;
+                }
+				agecounterfrac.innerHTML = ageStrFrac;				
+			}
+			
+			setInterval(updateAgeCounter, 4)
+		</script>
+    </body>
+</html>
