@@ -5,6 +5,8 @@
         <link rel="icon", href="https://sillyvyxia.github.io/images/vyxia heading.png">
         <title>Vyxia's Age</title>
     </head>
+    <img id="confet" src="giphy.webp" style="width: 100%; height: 200vb; position: fixed; display: none;">
+    <audio id="birthday!" src="hapy birth.wav" style="display: none;"></audio>
     <body style="background-color: color(srgb 0.15 0 0.15);">
         <iframe id="navBar" src="https://sillyvyxia.github.io/navBar.html"></iframe>
         <hr>
@@ -20,6 +22,7 @@
         <script>
 			agecounterint = document.getElementById("age stuff int")
 			agecounterfrac = document.getElementById("age stuff float")
+            confet = document.getElementById("confet")
 
 			const bDate = new Date('2007-08-22T06:00:00')
 			
@@ -35,6 +38,11 @@
 				let ageStrInt = ageStrs[0];
 				let ageStrFrac = "." + ageStrs[1];
 				if (ageStrInt != agecounterint.innerHTML) {
+                    if (agecounterint.innerHTML != ":3") {
+                        confet.style.display = "block";
+                        document.getElementById("birthday!").play()
+                        document.getElementById("birthday!").volume = 0.5;
+                    }
 				    agecounterint.innerHTML = ageStrInt;
                 }
 				agecounterfrac.innerHTML = ageStrFrac;				
